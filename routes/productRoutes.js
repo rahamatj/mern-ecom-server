@@ -129,4 +129,12 @@ router.get('/tag', async (req, res) => {
     }
 })
 
+router.get('/:id', async (req, res) => {
+    const id = req.params.id;
+
+    const product = await Product.findById(id);
+
+    return res.status(200).send(product);
+})
+
 export default router;
