@@ -2,7 +2,6 @@ import express from 'express';
 import mongoose from 'mongoose';
 import productRoutes from './routes/productRoutes.js';
 import cors from 'cors';
-import config from './utils/server.config.js';
 
 const app = express();
 
@@ -18,8 +17,8 @@ app.use((req, res, next) => {
     next();
 });
 
-const PORT = process.env.PORT || config().PORT;
-const MONGO_URI = config().MONGO_URI;
+const PORT = process.env.PORT || 3001;
+const MONGO_URI = "mongodb://127.0.0.1:27017/ecom";
 
 // Root route
 app.get('/', (req, res) => {
