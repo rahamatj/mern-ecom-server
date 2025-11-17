@@ -24,11 +24,17 @@ const productSchema = new Schema({
         default: 0,
     },
     color: {
-        type: [String],
+        type: String,
     },
     tags: {
         type: [String],
-    }
+    },
+    qty: {
+        type: Number,
+    },
+    size: {
+        type: String,
+    },
 }, {timestamps: true});
 
 const Product = mongoose.model('Product', productSchema);
