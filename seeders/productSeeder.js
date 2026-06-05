@@ -1,9 +1,18 @@
 import { faker } from '@faker-js/faker';
-import 'dotenv/config';
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 import Product from '../models/Product.js';
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/ecom";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+dotenv.config({ path: resolve(__dirname, '../.env') });
+
+const MONGO_URI = process.env.MONGO_URI;
+// console.log('MONGO_URI:', MONGO_URI);
+// process.exit(0);
 
 const seedProducts = async (count = 100) => {
     try {
@@ -43,7 +52,7 @@ const seedProducts = async (count = 100) => {
     } catch (error) {
         console.error('❌ Error seeding products:', error);
 
-        process.exit(1);
+        process.exit(0);
     }
 };
 
