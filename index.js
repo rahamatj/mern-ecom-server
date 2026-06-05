@@ -1,7 +1,8 @@
+import cors from 'cors';
+import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
 import productRoutes from './routes/productRoutes.js';
-import cors from 'cors';
 
 const app = express();
 
@@ -9,16 +10,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Content Security Policy middleware
-app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy",
-        "default-src 'self'; connect-src 'self' https://localhost:3001;"
-    );
-    next();
-});
-
 const PORT = process.env.PORT || 3001;
-const MONGO_URI = "mongodb://127.0.0.1:27017/ecom";
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/ecom";
 
 // Root route
 app.get('/', (req, res) => {
@@ -31,7 +24,7 @@ app.use('/api/products', productRoutes);
 // Connect to MongoDB
 mongoose.connect(MONGO_URI)
     .then(() => {
-        console.log('✅ Connected to MongoDB locally');
+        console.log('✅ Connected to MongoDB');
 
         // Start server AFTER successful DB connection
         app.listen(PORT, () => {

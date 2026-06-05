@@ -1,9 +1,9 @@
-import mongoose from 'mongoose';
 import { faker } from '@faker-js/faker';
+import 'dotenv/config';
+import mongoose from 'mongoose';
 import Product from '../models/Product.js';
-import config from "../utils/server.config.js";
 
-const MONGO_URI = config().MONGO_URI;
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/ecom";
 
 const seedProducts = async (count = 100) => {
     try {
