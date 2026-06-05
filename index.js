@@ -1,8 +1,10 @@
 import cors from 'cors';
-import 'dotenv/config';
+import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 import productRoutes from './routes/productRoutes.js';
+
+dotenv.config();
 
 const app = express();
 
@@ -10,8 +12,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 3001;
-const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/ecom";
+const PORT = process.env.PORT;
+const MONGO_URI = process.env.MONGO_URI;
 
 // Root route
 app.get('/', (req, res) => {
