@@ -11,8 +11,6 @@ const __dirname = dirname(__filename);
 dotenv.config({ path: resolve(__dirname, '../.env') });
 
 const MONGO_URI = process.env.MONGO_URI;
-// console.log('MONGO_URI:', MONGO_URI);
-// process.exit(0);
 
 const seedProducts = async (count = 100) => {
     try {
