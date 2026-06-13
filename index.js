@@ -15,8 +15,13 @@ app.use(express.json());
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
 
-// console.log(MONGO_URI);
-// process.exit(0);
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        "http://mern-ecom.com",
+    ],
+    credentials: true,
+}));
 
 // Root route
 app.get('/', (req, res) => {
