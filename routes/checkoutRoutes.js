@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
             cart: req.body.user.cart.map(
                 product => {
                     return {
+                        name: product.name,
                         productId: product.productId,
                         quantity: product.quantity,
                     }
