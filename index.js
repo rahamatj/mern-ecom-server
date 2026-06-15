@@ -2,9 +2,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
-import cartRoutes from './routes/cartRoutes.js';
+import checkoutRoutes from './routes/checkoutRoutes.js';
 import productRoutes from './routes/productRoutes.js';
-
 
 dotenv.config();
 
@@ -24,7 +23,7 @@ app.get('/', (req, res) => {
 
 // Use product routes - this was imported but never used
 app.use('/api/products', productRoutes);
-app.use('/api/cart', cartRoutes); // Assuming cartRoutes is imported and used here
+app.use('/api/checkout', checkoutRoutes);
 
 // Connect to MongoDB
 mongoose.connect(MONGO_URI)
